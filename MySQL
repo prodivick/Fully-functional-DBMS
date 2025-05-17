@@ -27,3 +27,22 @@ CREATE TABLE Courses (
     DepartmentID INT,
     FOREIGN KEY (DepartmentID) REFERENCES Departments(DepartmentID)
 );
+
+CREATE TABLE Enrollments (
+    EnrollmentID INT AUTO_INCREMENT PRIMARY KEY,
+    StudentID INT,
+    CourseID INT,
+    EnrollmentDate DATE DEFAULT CURRENT_DATE,
+    FOREIGN KEY (StudentID) REFERENCES Students(StudentID),
+    FOREIGN KEY (CourseID) REFERENCES Courses(CourseID),
+    UNIQUE(StudentID, CourseID)
+);
+
+CREATE TABLE Grades (
+    GradeID INT AUTO_INCREMENT PRIMARY KEY,
+    EnrollmentID INT,
+    Grade CHAR(2) CHECK (Grade IN ('A+', 'A', 'B', 'C', 'D', 'F')),
+    GradeDate DATE DEFAULT CURRENT_DATE,
+    FOREIGN KEY (EnrollmentID) REFERENCES Enrollments(EnrollmentID)
+);
+
