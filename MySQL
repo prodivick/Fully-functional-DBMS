@@ -3,7 +3,7 @@ CREATE DATABASE StudentRecords;
 USE StudentRecords;
 
 -- Table: Departments
-CREATE TABLE Departments (
+    CREATE TABLE Departments (
     DepartmentID INT AUTO_INCREMENT PRIMARY KEY,
     DepartmentName VARCHAR(100) NOT NULL UNIQUE
 );
