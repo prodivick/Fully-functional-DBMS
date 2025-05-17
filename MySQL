@@ -46,3 +46,23 @@ CREATE TABLE Grades (
     FOREIGN KEY (EnrollmentID) REFERENCES Enrollments(EnrollmentID)
 );
 
+CREATE TABLE Users (
+    UserID INT AUTO_INCREMENT PRIMARY KEY,
+    Username VARCHAR(50) UNIQUE NOT NULL,
+    PasswordHash VARCHAR(255) NOT NULL,
+    Role ENUM('Admin', 'Teacher') NOT NULL
+);
+
+INSERT INTO Departments (DepartmentName) VALUES ('Computer Science'), ('Mathematics');
+
+INSERT INTO Students (FirstName, LastName, Gender, DateOfBirth, Email, DepartmentID)
+VALUES ('Alice', 'Johnson', 'Female', '2001-04-23', 'alice@example.com', 1);
+
+INSERT INTO Courses (CourseName, Credits, DepartmentID)
+VALUES ('Database Systems', 3, 1), ('Calculus', 4, 2);
+
+INSERT INTO Enrollments (StudentID, CourseID)
+VALUES (1, 1), (1, 2);
+
+INSERT INTO Grades (EnrollmentID, Grade)
+VALUES (1, 'A'), (2, 'B');
